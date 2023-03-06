@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TouchableOpacity, Alert } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Alert , Button} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import { MakeButton, MissButton, UndoButton, ResetButton } from './Buttons';
 
@@ -13,10 +13,6 @@ export default function App() {
   const percentage = (makeCount / (makeCount + missCount)) * 100;
   const displayPercentage = isNaN(percentage) ? "0%" : percentage.toFixed(1) + "%";
 
-
-  const handleMakeReset = () => {
-    setMakeCount(0);
-  };
 
   const handleReset = () => {
     Alert.alert(
@@ -52,29 +48,25 @@ export default function App() {
 
   };
 
-
-
-
   return (
     <View>
-      <View style={{ marginTop: 100, alignItems: 'center' }}>
+      <View>      
+        <Text style={{marginTop: 50, fontSize: 30, height: 30, textAlign: 'center',  }}>Shot Tracker</Text>
+      </View>
+
+      <View style={{marginTop: 10, alignItems: 'center' }}>
         <MakeButton count={makeCount} setCount={setMakeCount} handleMakePress={handleMakePress} />
         <MissButton count={missCount} setCount={setMissCount} handleMissPress={handleMissPress}/>
       </View>
 
-
-
-
-
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginHorizontal: 20, marginTop: 20 }}>
         <View style={{ flex: 1 }}>
-          <Text style={{ fontSize: 30, height: 80, textAlign: 'center',  }}>{makeCount}/{makeCount+missCount}</Text>
+          <Text style={{ fontSize: 30, height: 50, textAlign: 'center',  }}>{makeCount}/{makeCount+missCount}</Text>
         </View>
         <View style={{ flex: 1 }}>
-          <Text style={{ fontSize: 30, height: 80, textAlign: 'center' }}>{displayPercentage}</Text>
+          <Text style={{ fontSize: 30, height: 50, textAlign: 'center' }}>{displayPercentage}</Text>
         </View>
       </View>
-
 
       <View style={{flexDirection: 'row', justifyContent: 'center', marginTop: 0 }}>
         <View style={{ flex: 1 }}>
@@ -83,6 +75,25 @@ export default function App() {
         <View style={{ flex: 1 }}>
           <ResetButton handleReset={handleReset} />
         </View>
+      </View>
+
+      <View style={{flexDirection: 'row', justifyContent: 'center', marginTop: 0 }}>
+        <View style={{ flex: 1 }}>
+          <Button
+            title="Save"
+            onPress={() => Alert.alert('Left button pressed')}
+          />
+        </View>
+        <View style={{ flex: 1 }}>
+          <Button
+            title="Exit"
+            onPress={() => Alert.alert('Right button pressed')}
+          />
+        </View>
+      </View>
+      <View style={{ flex: 1 }}>
+        
+
       </View>
 
 
@@ -97,5 +108,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  fixToText: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });
