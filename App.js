@@ -11,7 +11,15 @@ export default function App() {
   const [lastCounts, setLastCounts] = useState({ makeCount: 0, missCount: 0 });
 
   const [started, setStarted] = useState(false);
+  const [results, setResults] = useState([]);
+  useEffect(() => {
+    Voice.onSpeechError = onSpeechError;
+    Voice.onSpeechResults = onSpeechResults;
 
+    return () => {
+      Voice.destroy().then(Voice.removeAllListeners)
+    }
+  })
 
   const percentage = (makeCount / (makeCount + missCount)) * 100;
   const displayPercentage = isNaN(percentage) ? "0%" : percentage.toFixed(1) + "%";
@@ -62,6 +70,13 @@ export default function App() {
     setStarted(false);
   };
 
+  const onSpeechResults = (result) => {
+    setResults(result.value);
+  };
+
+  const onSpeechError = (error) => {
+    console.log(error);
+  };
 
   return (
     <View>
@@ -117,10 +132,11 @@ export default function App() {
       </View>
       <View style={{ flex: 1 }}>
         
+        
 
       </View>
-
-
+      {results.map((result, index) => <Text key={index}>{result}</Text>  ) }
+ 
     </View>
 
   );
