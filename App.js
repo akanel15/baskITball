@@ -2,13 +2,16 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TouchableOpacity, Alert , Button} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import { MakeButton, MissButton, UndoButton, ResetButton } from './Buttons';
-
+import Voice from '@react-native-voice/voice'
 
 export default function App() {
   const [makeCount, setMakeCount] = useState(0);
   const [missCount, setMissCount] = useState(0);
   const [lastPress, setLastPress] = useState(null);
   const [lastCounts, setLastCounts] = useState({ makeCount: 0, missCount: 0 });
+
+  const [started, setStarted] = useState(false);
+
 
   const percentage = (makeCount / (makeCount + missCount)) * 100;
   const displayPercentage = isNaN(percentage) ? "0%" : percentage.toFixed(1) + "%";
@@ -48,6 +51,18 @@ export default function App() {
 
   };
 
+
+  const VoiceOn = async () => {
+    await Voice.start("en-NZ");
+    setStarted(true);
+  };
+
+  const VoiceOff = async () => {
+    await Voice.stop();
+    setStarted(false);
+  };
+
+
   return (
     <View>
       <View>      
@@ -81,13 +96,22 @@ export default function App() {
         <View style={{ flex: 1 }}>
           <Button
             title="Save"
-            onPress={() => Alert.alert('Left button pressed')}
+            onPress={() => Alert.alert('Save pressed')}
           />
+        </View>
+        <View style={{ flex: 1 }}>
+          {!started ? <Button
+          title="Voice On"
+          onPress={VoiceOn}
+          /> : <Button
+          title="Voice Off"
+          onPress={VoiceOff}
+          />}
         </View>
         <View style={{ flex: 1 }}>
           <Button
             title="Exit"
-            onPress={() => Alert.alert('Right button pressed')}
+            onPress={() => Alert.alert('Exit pressed')}
           />
         </View>
       </View>
