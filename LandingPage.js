@@ -32,12 +32,13 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#000', // background color black
   },
   title: {
     fontSize: 40,
     fontWeight: 'bold',
     marginBottom: 50,
+    color: '#fff', // text color white
   },
   button: {
     backgroundColor: '#0080ff',
@@ -52,5 +53,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
+
 
 export default LoadingScreen;

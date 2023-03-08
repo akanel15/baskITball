@@ -9,7 +9,7 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="LandingPage" screenOptions={{ headerShown: false }}>
+      <Stack.Navigator initialRouteName="LandingPage" screenOptions={{ headerShown: false, gestureEnabled: false  }}>
         <Stack.Screen name="LandingPage" component={LandingPage} />
         <Stack.Screen name="ShotTracker" component={ShotTracker} />
       </Stack.Navigator>

@@ -49,9 +49,9 @@ export const ShotTracker= () => {
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <View>      
-        <Text style={{marginTop: 50, fontSize: 30, height: 30, textAlign: 'center',  }}>Shot Tracker</Text>
+        <Text style={{marginTop: 50, fontSize: 30, height: 30, textAlign: 'center',  color: '#fff'}}>Shot Tracker</Text>
       </View>
 
       <View style={{marginTop: 10, alignItems: 'center' }}>
@@ -61,10 +61,10 @@ export const ShotTracker= () => {
 
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginHorizontal: 20, marginTop: 20 }}>
         <View style={{ flex: 1 }}>
-          <Text style={{ fontSize: 30, height: 50, textAlign: 'center',  }}>{makeCount}/{makeCount+missCount}</Text>
+          <Text style={{ fontSize: 30, height: 50, textAlign: 'center',  color: '#fff'}}>{makeCount}/{makeCount+missCount}</Text>
         </View>
         <View style={{ flex: 1 }}>
-          <Text style={{ fontSize: 30, height: 50, textAlign: 'center' }}>{displayPercentage}</Text>
+          <Text style={{ fontSize: 30, height: 50, textAlign: 'center', color: '#fff'}}>{displayPercentage}</Text>
         </View>
       </View>
 
@@ -105,15 +105,18 @@ export const ShotTracker= () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#000', // black background
     alignItems: 'center',
     justifyContent: 'center',
   },
-  fixToText: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+  button: {
+    backgroundColor: '#fff', // white background for buttons
+    borderRadius: 5,
+    padding: 10,
+    margin: 5,
   },
 });
+
 
 export default ShotTracker;
 
