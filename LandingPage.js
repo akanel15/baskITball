@@ -5,7 +5,7 @@ import {NavigationContainer} from '@react-navigation/native';
 
 const LoadingScreen = ({ navigation }) => {
   const handlePress = (route) => {
-    navigation.navigate('ShotTracker', { screen: 'ShotTrackerPage' });
+    navigation.navigate('ShotTracker');
   };
 
   return (
