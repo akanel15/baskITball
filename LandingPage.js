@@ -5,7 +5,7 @@ import {NavigationContainer} from '@react-navigation/native';
 
 const LoadingScreen = ({ navigation }) => {
   const handlePress = (route) => {
-    navigation.navigate('ShotTracker');
+    navigation.navigate(route);
   };
 
   return (
@@ -14,7 +14,7 @@ const LoadingScreen = ({ navigation }) => {
       <TouchableOpacity style={styles.button} onPress={() => handlePress('ShotTracker')}>
         <Text style={styles.buttonText}>Shot Tracker</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={() => handlePress('RecordStats')}>
+      <TouchableOpacity style={styles.button} onPress={() => handlePress('RecordTeamStats')}>
         <Text style={styles.buttonText}>Record Stats</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={() => handlePress('PlayerAnalytics')}>
